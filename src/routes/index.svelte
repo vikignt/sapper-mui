@@ -1,65 +1,47 @@
-<script>
-	import { Button, Checkbox } from 'svelte-mui/src';
+<div class="warning">
+	<p>
+		<em>WARNING</em>
+	</p>
+	<p>This is a demo of work in progress...</p>
+</div>
 
-	let checked = true;
+<section>
+	{@html introduction}
+	{@html quickStart}
+	{@html byExample}
+</section>
+
+<script>
+	import introduction from './home/introduction.md';
+	import quickStart from './home/quick-start.md';
+	import byExample from './home/by-example.md';
 </script>
 
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
+	section :global(p),
+	section :global(li) {
+		font-family: var(--code-font-family);
+		font-size: 14px;
+		letter-spacing: 0.01em;
+		line-height: 1.5em;
 	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
+	section :global(pre) {
+		background: #212121;
+		color: #fff;
+		border-radius: 4px;
+		padding: 1rem;
+		overflow-x: auto;
 	}
-
-	figure {
-		margin: 0 0 1em 0;
+	section :global(:not(pre) code),
+	section :global(:not(pre) code) {
+		font-size: 14px;
+		color: var(--accent);
 	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
+	.warning {
+		background: var(--bg-panel);
+		border-left: 4px solid #fdd835;
+		margin-bottom: 34px;
+		padding: 8px;
+		font-size: 14px;
 	}
 </style>
-
-<svelte:head>
-	<title>Sapper project template</title>
-</svelte:head>
-
-<h1>Great success!</h1>
-
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
-
-<Checkbox bind:checked>Checkbox</Checkbox>
-
-<p>Checkbox is <strong>{checked ? 'checked' : 'unchecked'}</strong></p>
-
-<Button
-    outlined
-    shaped
-    color="Red"
-    on:click={() => { checked = !checked }}
->
-    Inverse
-</Button>
